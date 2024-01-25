@@ -37,11 +37,8 @@
       />
     </n-form-item>
 
-    <n-form-item label="Subir imagen del objeto" path="Imagen">
-      <n-upload
-        v-model:value="formValue.Imagen">
-        <n-button>Subir imagen del objeto</n-button>
-      </n-upload>
+    <n-form-item label="Imagen" path="Imagen">
+      <n-input v-model:value="formValue.Imagen" placeholder="URL a la imagen" />
     </n-form-item>
 
 
