@@ -119,9 +119,14 @@ export default defineComponent({
     const computedFormValue = computed(() => {
       return {
         ...formValue.value,
-        Pasivo: formValue.value.Pasivo === 'Si'
+        Pasivo: formValue.value.Pasivo === 'Si',
+        Pool: Array.isArray(formValue.value.Pool) ? formValue.value.Pool.join(', ') : formValue.value.Pool
       };
     });
+    // Las propiedades computadas Vue son una de las características más
+    // potentes del framework. Permiten establecer comparaciones y lógica
+    // elaborada que se reevalúa cada vez que uno de sus valores a comprobar
+    // cambia, asegurando su reactividad.
 
     const enviarDatos = () => {
       supabase
