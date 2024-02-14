@@ -6,12 +6,11 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <header>
     <nav>
-      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/">Form</RouterLink>
       <br>
-      <RouterLink to="/about">About</RouterLink>
+      <RouterLink to="/about">Lista de Objetos</RouterLink>
     </nav>
   </header>
-
   <RouterView />
 </template>
 
