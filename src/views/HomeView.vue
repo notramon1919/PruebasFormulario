@@ -20,7 +20,6 @@
           v-model:value="formValue.Pasivo"
           placeholder="Pasivo"
           :options="opcionesEsPasivo"
-
       />
     </n-form-item>
 
@@ -55,7 +54,7 @@
 </template>
 
 <script>
-import {defineComponent, ref} from 'vue';
+import {computed, defineComponent, ref} from 'vue';
 import {createClient} from '@supabase/supabase-js';
 
 export default defineComponent({
@@ -117,10 +116,17 @@ export default defineComponent({
       }
     };
 
+    const computedFormValue = computed(() => {
+      return {
+        ...formValue.value,
+        Pasivo: formValue.value.Pasivo === 'Si'
+      };
+    });
+
     const enviarDatos = () => {
       supabase
           .from('Objetos')
-          .upsert([formValue.value])
+          .upsert([computedFormValue.value])
           .then((response) => {
             console.log(response);
           })
@@ -134,6 +140,7 @@ export default defineComponent({
       opcionesEsPasivo,
       opcionesPool,
       formValue,
+      computedFormValue,
       rules,
       enviarDatos
     };
